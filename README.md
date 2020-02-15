@@ -41,6 +41,10 @@ Yields:
 { type: 'leaf', value: '3' }
 ```
 
+NOTE: `leaf` with `value` `2` is visited before it's parent `node`. By the
+time your `transform` function is invoked, it's `children` will already have
+been passed through `transform`.
+
 ## API
 
 ### `reduce(tree, transform)`
@@ -48,6 +52,11 @@ Yields:
 - `tree` - A node of type `Parent`
 - `transform` - A function with the signature:
   - `(node: Node, path: number[], root: Paretn) => Node | Node[]`
+    - `node` - The `Node` in the tree to be transformed
+    - `path` - The path to reach this node in each level of the tree
+    - `root` - The `Parent` root node
+    - Returns - What you return is passed to `.concat()` on the `children`
+      array of the node's parent.
 
 ## Related
 
@@ -61,16 +70,6 @@ Yields:
   — Remove nodes from a tree that pass a test
 - [`unist-util-select`](https://github.com/eush77/unist-util-select)
   — Select nodes with CSS-like selectors
-
-## Contribute
-
-See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
-started.
-See [`support.md`][support] for ways to get help.
-
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
-abide by its terms.
 
 ## License
 
