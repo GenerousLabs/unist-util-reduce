@@ -38,3 +38,5 @@ export const recursiveReduce = (root: Parent, transform: Transform) => {
     children: children.reduce(iteratee([]), [])
   };
 };
+
+export default recursiveReduce;
