@@ -60,8 +60,6 @@ been passed through `transform`.
 
 ## Related
 
-- [`unist-util-visit-parents`][vp]
-  — Like `visit`, but with a stack of parents
 - [`unist-util-filter`](https://github.com/eush77/unist-util-filter)
   — Create a new tree with all nodes that pass a test
 - [`unist-util-map`](https://github.com/syntax-tree/unist-util-map)
