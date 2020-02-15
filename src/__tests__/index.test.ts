@@ -76,5 +76,24 @@ describe("unist-util-reduce", () => {
 
       expect(recursiveReduce(root, () => [])).toEqual(output);
     });
+
+    it("Does not return children which are skipped #JYY14l", () => {
+      const root = u("root", [
+        u("leaf"),
+        u("leaf", [u("child")]),
+        u("leaf"),
+        u("leaf")
+      ]);
+      const output = u("root", []);
+
+      expect(
+        recursiveReduce(root, (root, path, node) => {
+          if (node.type === "leaf") {
+            return [];
+          }
+          return node;
+        })
+      ).toEqual(output);
+    });
   });
 });
