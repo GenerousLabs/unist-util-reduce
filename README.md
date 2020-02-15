@@ -15,37 +15,6 @@ npm install unist-util-reduce
 ## Usage
 
 ```js
-var u = require("unist-builder");
-var reduce = require("unist-util-reduce");
-
-var tree = u("tree", [
-  u("leaf", "1"),
-  u("node", [u("leaf", "2")]),
-  u("void"),
-  u("leaf", "3")
-]);
-
-reduce(tree, function(node) {
-  console.log(node);
-  return node;
-});
-```
-
-Yields:
-
-```js
-{ type: 'leaf', value: '1' }
-{ type: 'leaf', value: '2' }
-{ type: 'node' }
-{ type: 'void' }
-{ type: 'leaf', value: '3' }
-```
-
-NOTE: `leaf` with `value` `2` is visited before it's parent `node`. By the
-time your `transform` function is invoked, it's `children` will already have
-been passed through `transform`.
-
-```js
 const u = require("unist-builder");
 const assert = require("assert");
 
@@ -73,6 +42,10 @@ const expected = u("tree", [
 
 assert.deepEqual(newTree, expected);
 ```
+
+NOTE: `leaf` with `value` `2` is visited before it's parent `node`. By the
+time your `transform` function is invoked, it's `children` will already have
+been passed through `transform`.
 
 ## API
 
