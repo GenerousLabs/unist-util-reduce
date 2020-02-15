@@ -69,5 +69,12 @@ describe("unist-util-reduce", () => {
         { id: "#aoyKWB", type: "leaf" }
       );
     });
+
+    it("Does not return children which are skipped #fynx90", () => {
+      const root = u("root", [u("leaf"), u("leaf"), u("leaf"), u("leaf")]);
+      const output = u("root", []);
+
+      expect(recursiveReduce(root, () => [])).toEqual(output);
+    });
   });
 });
