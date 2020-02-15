@@ -78,6 +78,7 @@ abide by its terms.
 
 <!-- Definition -->
 
+[chat-badge]: https://img.shields.io/badge/chat-spectrum-7b16ff.svg
 [chat]: https://spectrum.chat/unified/syntax-tree
 [npm]: https://docs.npmjs.com/cli/install
-[license]: LICENSE
+[license]: licensea
