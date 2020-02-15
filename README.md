@@ -82,3 +82,4 @@ abide by its terms.
 [chat]: https://spectrum.chat/unified/syntax-tree
 [npm]: https://docs.npmjs.com/cli/install
 [license]: licensea
+[unist]: https://github.com/syntax-tree/unist
