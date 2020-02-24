@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint src/** --ext .js,.jsx,.ts,.tsx",
     "prepack": "yarn run build",
     "prepublishOnly": "yarn test && yarn run lint",
     "preversion": "yarn run format && git add -A src",
