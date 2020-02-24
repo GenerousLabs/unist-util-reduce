@@ -18,7 +18,7 @@
   },
   "keywords": [],
   "author": "Callum Macdonald https://github.com/chmac",
-  "license": "AGPL-3.0-or-later",
+  "license": "MIT",
   "dependencies": {
     "remeda": "^0.0.14",
     "unist-util-is": "^4.0.1"
