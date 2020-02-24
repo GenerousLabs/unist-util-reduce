@@ -1,6 +1,6 @@
 {
   "name": "unist-util-reduce",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Parse unist trees, and map over nodes that pass a predicate function",
   "repository": "github:GenerousLabs/units-util-reduce",
   "files": [
