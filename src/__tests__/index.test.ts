@@ -11,12 +11,14 @@ describe("unist-util-reduce", () => {
         u("leaf", { id: "#aoyKWB" }),
         u("leaf", { id: "#GBGJS1" })
       ]);
-      const transform = jest.fn((root, path, node) => {
+      const transform = jest.fn(node => {
         return node;
       });
 
       expect(recursiveReduce(tree, transform)).toEqual(tree);
       expect(transform).toHaveBeenCalledWith(
+        { id: "#rJLkIg", type: "leaf" },
+        [],
         {
           children: [
             { id: "#rJLkIg", type: "leaf" },
@@ -25,11 +27,11 @@ describe("unist-util-reduce", () => {
             { id: "#GBGJS1", type: "leaf" }
           ],
           type: "root"
-        },
-        [],
-        { id: "#rJLkIg", type: "leaf" }
+        }
       );
       expect(transform).toHaveBeenCalledWith(
+        { id: "#rJLkIg", type: "leaf" },
+        [],
         {
           children: [
             { id: "#rJLkIg", type: "leaf" },
@@ -38,11 +40,11 @@ describe("unist-util-reduce", () => {
             { id: "#GBGJS1", type: "leaf" }
           ],
           type: "root"
-        },
-        [],
-        { id: "#rJLkIg", type: "leaf" }
+        }
       );
       expect(transform).toHaveBeenCalledWith(
+        { id: "#YYAItG", type: "leaf" },
+        [],
         {
           children: [
             { id: "#rJLkIg", type: "leaf" },
@@ -51,11 +53,11 @@ describe("unist-util-reduce", () => {
             { id: "#GBGJS1", type: "leaf" }
           ],
           type: "root"
-        },
-        [],
-        { id: "#YYAItG", type: "leaf" }
+        }
       );
       expect(transform).toHaveBeenCalledWith(
+        { id: "#aoyKWB", type: "leaf" },
+        [],
         {
           children: [
             { id: "#rJLkIg", type: "leaf" },
@@ -64,9 +66,7 @@ describe("unist-util-reduce", () => {
             { id: "#GBGJS1", type: "leaf" }
           ],
           type: "root"
-        },
-        [],
-        { id: "#aoyKWB", type: "leaf" }
+        }
       );
     });
 
@@ -87,7 +87,7 @@ describe("unist-util-reduce", () => {
       const output = u("root", []);
 
       expect(
-        recursiveReduce(root, (root, path, node) => {
+        recursiveReduce(root, node => {
           if (node.type === "leaf") {
             return [];
           }

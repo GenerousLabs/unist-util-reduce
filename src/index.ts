@@ -1,9 +1,9 @@
 import { Node, Parent } from "unist";
 
 export type Transform = (
-  root: Parent,
+  node: Node,
   path: number[],
-  node: Node
+  root: Parent
 ) => Node | Node[];
 
 const isParent = (node: Node): node is Parent => {
@@ -26,10 +26,10 @@ export const recursiveReduce = (root: Parent, transform: Transform): Parent => {
         children: children.reduce(iteratee(path.concat(index)), [])
       };
 
-      return accumulator.concat(transform(root, path, reduced));
+      return accumulator.concat(transform(reduced, path, root));
     }
 
-    return accumulator.concat(transform(root, path, node));
+    return accumulator.concat(transform(node, path, root));
   };
 
   return {
