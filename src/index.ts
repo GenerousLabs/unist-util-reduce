@@ -10,14 +10,13 @@ const isParent = (node: Node): node is Parent => {
   return typeof node.children !== "undefined" && Array.isArray(node.children);
 };
 
-export const recursiveReduce = (root: Parent, transform: Transform) => {
+export const recursiveReduce = (root: Parent, transform: Transform): Parent => {
   const { children, ...rest } = root;
 
   const iteratee = (path: number[]) => (
     accumulator: Node[],
     node: Node,
-    index: number,
-    children: Node[]
+    index: number
   ): Node[] => {
     if (isParent(node)) {
       const { children, ...rest } = node;
