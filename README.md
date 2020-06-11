@@ -16,6 +16,7 @@ npm install unist-util-reduce
 
 ```js
 const u = require("unist-builder");
+const reduce = require("unist-util-reduce");
 const assert = require("assert");
 
 const tree = u("tree", [
