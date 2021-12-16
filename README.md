@@ -54,7 +54,7 @@ been passed through `transform`.
 
 - `tree` - A node of type `Parent`
 - `transform` - A function with the signature:
-  - `(node: Node, path: number[], root: Paretn) => Node | Node[]`
+  - `(node: Node, path: number[], root: Parent) => Node | Node[]`
     - `node` - The `Node` in the tree to be transformed
     - `path` - The path to reach this node in each level of the tree
     - `root` - The `Parent` root node
